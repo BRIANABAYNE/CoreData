@@ -35,7 +35,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Aw8-p9-952">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="yA8-eK-yaE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yA8-eK-yaE"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ju-La-3wb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -51,19 +51,62 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uP5-zd-ufe">
-                                <rect key="frame" x="0.0" y="126" width="393" height="197"/>
+                                <rect key="frame" x="0.0" y="126" width="393" height="264"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="DNS-Io-YGB">
+                                <rect key="frame" x="30" y="490" width="333" height="128"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UyX-20-FgA">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Artist" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8aU-pO-GRM">
+                                        <rect key="frame" x="0.0" y="47" width="333" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Year" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J3Q-ez-qTu">
+                                        <rect key="frame" x="0.0" y="94" width="333" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTY-qH-44K">
+                                <rect key="frame" x="100" y="674" width="193" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="X1O-G7-zhA"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Save"/>
+                                <connections>
+                                    <action selector="coreDataSaveButtonTapped:" destination="kl9-r6-7fX" eventType="touchUpInside" id="DEU-Me-xjy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="S44-j2-zB4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="S44-j2-zB4" firstAttribute="bottom" secondItem="uP5-zd-ufe" secondAttribute="bottom" constant="495" id="6aI-XD-b65"/>
+                            <constraint firstItem="S44-j2-zB4" firstAttribute="trailing" secondItem="hTY-qH-44K" secondAttribute="trailing" constant="100" id="A0o-WC-3pt"/>
+                            <constraint firstItem="DNS-Io-YGB" firstAttribute="top" secondItem="uP5-zd-ufe" secondAttribute="bottom" constant="100" id="Eyc-kM-aqu"/>
+                            <constraint firstItem="S44-j2-zB4" firstAttribute="trailing" secondItem="DNS-Io-YGB" secondAttribute="trailing" constant="30" id="FaA-TJ-HbS"/>
                             <constraint firstItem="uP5-zd-ufe" firstAttribute="leading" secondItem="S44-j2-zB4" secondAttribute="leading" id="KG6-eR-t8A"/>
+                            <constraint firstItem="S44-j2-zB4" firstAttribute="bottom" secondItem="hTY-qH-44K" secondAttribute="bottom" constant="100" id="My9-IB-RHM"/>
                             <constraint firstItem="uP5-zd-ufe" firstAttribute="trailing" secondItem="S44-j2-zB4" secondAttribute="trailing" id="TFD-gs-rNR"/>
+                            <constraint firstItem="DNS-Io-YGB" firstAttribute="leading" secondItem="S44-j2-zB4" secondAttribute="leading" constant="30" id="XQC-3p-J9r"/>
+                            <constraint firstItem="hTY-qH-44K" firstAttribute="leading" secondItem="S44-j2-zB4" secondAttribute="leading" constant="100" id="iYq-tN-Atu"/>
+                            <constraint firstItem="S44-j2-zB4" firstAttribute="bottom" secondItem="DNS-Io-YGB" secondAttribute="bottom" constant="200" id="jlk-YD-nC6"/>
                             <constraint firstItem="uP5-zd-ufe" firstAttribute="top" secondItem="S44-j2-zB4" secondAttribute="top" constant="23" id="uyl-XX-8q5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="eHY-he-946"/>
+                    <connections>
+                        <outlet property="coreDataArtistTextField" destination="8aU-pO-GRM" id="5aN-7l-oEd"/>
+                        <outlet property="coreDataImage" destination="uP5-zd-ufe" id="iHc-zo-C4r"/>
+                        <outlet property="coreDataNameTextField" destination="UyX-20-FgA" id="jxA-XM-jcS"/>
+                        <outlet property="coreDataYearTextField" destination="J3Q-ez-qTu" id="6AX-Tt-iXc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDJ-3a-rFr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
