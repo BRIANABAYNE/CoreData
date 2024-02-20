@@ -25,7 +25,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="kl9-r6-7fX" kind="show" id="uNv-hr-s6t"/>
+                                    <segue destination="kl9-r6-7fX" kind="show" identifier="toDetailVC" id="uNv-hr-s6t"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -34,9 +34,7 @@
                             <outlet property="delegate" destination="lza-1v-KCX" id="TbX-wU-Nmj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Aw8-p9-952">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="yA8-eK-yaE"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Aw8-p9-952"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ju-La-3wb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
