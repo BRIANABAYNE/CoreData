@@ -6,41 +6,74 @@
 //
 
 import UIKit
+import CoreData
 
 class CoreDataTableViewController: UITableViewController {
 
+    var nameArray = [String]()
+    var idArray = [UUID]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        getDataFromCoreData()
+        
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(UIbarButton))
-
     }
     
+    
+    func getDataFromCoreData() {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        /// Fetching CoreData
+       let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
+        fetchRequest.returnsObjectsAsFaults = false
+    
+        
+        
+        do {
+               let results = try context.fetch(fetchRequest)
+            
+            for result in results as! [NSManagedObject] { 
+                if let name = result.value(forKey: "name") as? String {
+                    self.nameArray.append(name)
+                }
+                
+                if let id = result.value(forKey: "id") as? UUID {
+                    self.idArray.append(id)
+                }
+                
+                self.tableView.reloadData()
+            }
+            
+            
+            } catch {
+                
+                print("Error fetching the data")
+            }
+    }
+    
+
     @objc func UIbarButton() {
         performSegue(withIdentifier: "toDetailVC", sender: nil)
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+  
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+      
+        return  nameArray.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PaintingCell", for: indexPath)
+        cell.textLabel?.text = nameArray[indexPath.row]
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
