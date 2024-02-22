@@ -41,6 +41,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A64CDA92B87CCC500511101 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3A6AD6352B844B430006AA33 /* Assets.xcassets */,
+				3A6AD62B2B844B420006AA33 /* SceneDelegate.swift */,
+				3A6AD6292B844B420006AA33 /* AppDelegate.swift */,
+				3A6AD63A2B844B430006AA33 /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		3A64CDAA2B87CCE200511101 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				3A6AD6322B844B420006AA33 /* CoreData3.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		3A64CDAB2B87CD3300511101 /* MainStoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				3A6AD62F2B844B420006AA33 /* Main.storyboard */,
+				3A6AD6372B844B430006AA33 /* LaunchScreen.storyboard */,
+			);
+			name = MainStoryBoard;
+			sourceTree = "<group>";
+		};
+		3A64CDAC2B87CD5100511101 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3A6AD6402B844E7C0006AA33 /* CoreDataTableViewController.swift */,
+				3A6AD6422B844F460006AA33 /* DetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		3A6AD61D2B844B420006AA33 = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +97,10 @@
 		3A6AD6282B844B420006AA33 /* CoreData3 */ = {
 			isa = PBXGroup;
 			children = (
-				3A6AD6292B844B420006AA33 /* AppDelegate.swift */,
-				3A6AD62B2B844B420006AA33 /* SceneDelegate.swift */,
-				3A6AD62F2B844B420006AA33 /* Main.storyboard */,
-				3A6AD6422B844F460006AA33 /* DetailViewController.swift */,
-				3A6AD6402B844E7C0006AA33 /* CoreDataTableViewController.swift */,
-				3A6AD6352B844B430006AA33 /* Assets.xcassets */,
-				3A6AD6372B844B430006AA33 /* LaunchScreen.storyboard */,
-				3A6AD63A2B844B430006AA33 /* Info.plist */,
-				3A6AD6322B844B420006AA33 /* CoreData3.xcdatamodeld */,
+				3A64CDAC2B87CD5100511101 /* ViewController */,
+				3A64CDAB2B87CD3300511101 /* MainStoryBoard */,
+				3A64CDAA2B87CCE200511101 /* CoreData */,
+				3A64CDA92B87CCC500511101 /* SupportingFiles */,
 			);
 			path = CoreData3;
 			sourceTree = "<group>";
@@ -302,7 +334,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X5MZCV93J6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoreData3/Info.plist;
+				INFOPLIST_FILE = CoreData3/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -330,7 +362,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X5MZCV93J6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CoreData3/Info.plist;
+				INFOPLIST_FILE = CoreData3/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

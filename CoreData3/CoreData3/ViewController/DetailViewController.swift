@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
     @IBOutlet weak var coreDataNameTextField: UITextField!
     @IBOutlet weak var coreDataArtistTextField: UITextField!
     @IBOutlet weak var coreDataYearTextField: UITextField!
+    @IBOutlet weak var saveButtonTapped: UIButton!
     
     
     var chosenPainting = ""
@@ -29,6 +30,13 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         // If painting is not empty != then I am fetching the information from coreData
         if chosenPainting != "" {
+            
+            /// Will show but is Enabled on DetailScreen
+           //saveButtonTapped.isEnabled = false
+            
+            /// Hides the SaveButton on the DetailScreen
+            saveButtonTapped.isHidden = true
+            
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
@@ -69,6 +77,10 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
             
             // Display the default on the detailVC - creating empty string
         } else {
+            
+            saveButtonTapped.isHidden = false
+            saveButtonTapped.isEnabled = false
+            
             coreDataNameTextField.text = ""
             coreDataArtistTextField.text = ""
             coreDataYearTextField.text = ""
@@ -96,6 +108,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         // will give a dictionary
         coreDataImage.image = info[.originalImage] as? UIImage
+        saveButtonTapped.isEnabled = true
         self.dismiss(animated: true, completion: nil)
     }
     

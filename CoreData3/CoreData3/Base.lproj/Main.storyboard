@@ -107,6 +107,7 @@
                         <outlet property="coreDataImage" destination="uP5-zd-ufe" id="iHc-zo-C4r"/>
                         <outlet property="coreDataNameTextField" destination="UyX-20-FgA" id="jxA-XM-jcS"/>
                         <outlet property="coreDataYearTextField" destination="J3Q-ez-qTu" id="6AX-Tt-iXc"/>
+                        <outlet property="saveButtonTapped" destination="hTY-qH-44K" id="ucQ-cW-cFB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cDJ-3a-rFr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
