@@ -17,11 +17,62 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
     @IBOutlet weak var coreDataArtistTextField: UITextField!
     @IBOutlet weak var coreDataYearTextField: UITextField!
     
+    
+    var chosenPainting = ""
+    var chosenPaintingID: UUID?
+
+    
     // MARK: - Lifecycle's
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // If painting is not empty != then I am fetching the information from coreData
+        if chosenPainting != "" {
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
+            let idString = chosenPaintingID?.uuidString
+            fetchRequest.predicate = NSPredicate(format: "id = %@", idString!)
+            fetchRequest.returnsObjectsAsFaults = false
+            
+            do {
+                let results = try context.fetch(fetchRequest)
+                if results.count > 0 {
+                    for result in results as! [NSManagedObject] {
+                        
+                        if let name = result.value(forKey: "name") as? String {
+                            coreDataNameTextField.text = name
+                        }
+                        
+                        if let artist = result.value(forKey: "artist") as? String {
+                            coreDataArtistTextField.text = artist
+                        }
+                        
+                        if let year = result.value(forKey: "year") as? Int {
+                            coreDataYearTextField.text = String(year)
+                        }
+                        
+                        if let imageData = result.value(forKey: "image") as? Data {
+                            let image = UIImage(data: imageData)
+                            coreDataImage.image = image
+                        }
+                        
+                    }
+                }
+                
+            } catch {
+                print("Error .. ")
+            }
+            
+            // Display the default on the detailVC - creating empty string
+        } else {
+            coreDataNameTextField.text = ""
+            coreDataArtistTextField.text = ""
+            coreDataYearTextField.text = ""
+        }
         
         // MARK: - Recognizers
         
@@ -91,5 +142,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
         }
 
     }
+
 
 }

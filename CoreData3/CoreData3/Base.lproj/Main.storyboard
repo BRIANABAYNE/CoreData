@@ -48,7 +48,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IMG_0756" translatesAutoresizingMaskIntoConstraints="NO" id="uP5-zd-ufe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="romanticizeyourworld" translatesAutoresizingMaskIntoConstraints="NO" id="uP5-zd-ufe">
                                 <rect key="frame" x="0.0" y="126" width="393" height="264"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="264" id="EhR-m7-GSC"/>
@@ -133,7 +133,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IMG_0756" width="3024" height="4032"/>
+        <image name="romanticizeyourworld" width="724" height="1024"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
