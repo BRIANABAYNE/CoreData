@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class DetailViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-
+    
     // MARK: - Outlets
     
     @IBOutlet weak var coreDataImage: UIImageView!
@@ -18,10 +18,10 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
     @IBOutlet weak var coreDataYearTextField: UITextField!
     @IBOutlet weak var saveButtonTapped: UIButton!
     
+    // MARK: - Properties
     
     var chosenPainting = ""
     var chosenPaintingID: UUID?
-
     
     // MARK: - Lifecycle's
     
@@ -32,7 +32,7 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
         if chosenPainting != "" {
             
             /// Will show but is Enabled on DetailScreen
-           //saveButtonTapped.isEnabled = false
+            //saveButtonTapped.isEnabled = false
             
             /// Hides the SaveButton on the DetailScreen
             saveButtonTapped.isHidden = true
@@ -75,12 +75,12 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
                 print("Error .. ")
             }
             
-            // Display the default on the detailVC - creating empty string
         } else {
             
             saveButtonTapped.isHidden = false
             saveButtonTapped.isEnabled = false
             
+            // Display the default on the detailVC - creating empty string
             coreDataNameTextField.text = ""
             coreDataArtistTextField.text = ""
             coreDataYearTextField.text = ""
@@ -105,12 +105,13 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
     
     // MARK: - ImagePicker
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        // will give a dictionary
-        coreDataImage.image = info[.originalImage] as? UIImage
-        saveButtonTapped.isEnabled = true
-        self.dismiss(animated: true, completion: nil)
-    }
+    func imagePickerController(
+        _ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            // will give a dictionary
+            coreDataImage.image = info[.originalImage] as? UIImage
+            saveButtonTapped.isEnabled = true
+            self.dismiss(animated: true, completion: nil)
+        }
     
     @objc func selectImage() {
         let picker = UIImagePickerController()
@@ -120,10 +121,10 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
         present(picker, animated: true, completion: nil)
     }
     
-// MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func coreDataSaveButtonTapped(_ sender: Any) {
-
+        
         // MARK: - CoreData
         
         /// Reaching the App Delegate with a constant
@@ -153,8 +154,6 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate & 
         } catch {
             print("Error saving data")
         }
-
+        
     }
-
-
 }

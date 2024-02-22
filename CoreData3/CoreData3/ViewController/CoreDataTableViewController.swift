@@ -10,12 +10,15 @@ import CoreData
 
 class CoreDataTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     var nameArray = [String]()
     var idArray = [UUID]()
     
-    
     var selectedPainting = ""
     var selectedPaintingId: UUID?
+    
+    // MARK: - Lifecycle's
     
     
     override func viewDidLoad() {
@@ -23,13 +26,17 @@ class CoreDataTableViewController: UITableViewController {
         
         getDataFromCoreData()
         
-        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(UIbarButton))
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(UIbarButton))
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
-        NotificationCenter.default.addObserver(self, selector: #selector(getDataFromCoreData), name: NSNotification.Name("NewData"), object: nil)
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(getDataFromCoreData),
+            name: NSNotification.Name("NewData"), object: nil)
     }
+    
+    // MARK: - Functions
     
     
     @objc func getDataFromCoreData() {
@@ -44,7 +51,6 @@ class CoreDataTableViewController: UITableViewController {
         /// Fetching CoreData
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
         fetchRequest.returnsObjectsAsFaults = false
-        
         
         do {
             let results = try context.fetch(fetchRequest)
@@ -65,7 +71,6 @@ class CoreDataTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
             
-            
         } catch {
             
             print("Error fetching the data")
@@ -85,8 +90,6 @@ class CoreDataTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return nameArray.count
@@ -100,7 +103,11 @@ class CoreDataTableViewController: UITableViewController {
     
     
     /// Deleting from CoreData
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath
+    ){
         if editingStyle == .delete {
             // First fetching the information from CoreData
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -140,7 +147,6 @@ class CoreDataTableViewController: UITableViewController {
             } catch {
                 print("Error Deleting")
             }
-            
         }
     }
         
@@ -150,9 +156,7 @@ class CoreDataTableViewController: UITableViewController {
         performSegue(withIdentifier: "toDetailVC", sender: nil)
         
     }
-    
-    
-    
+
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

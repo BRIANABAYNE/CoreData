@@ -97,9 +97,9 @@
 		3A6AD6282B844B420006AA33 /* CoreData3 */ = {
 			isa = PBXGroup;
 			children = (
+				3A64CDAA2B87CCE200511101 /* CoreData */,
 				3A64CDAC2B87CD5100511101 /* ViewController */,
 				3A64CDAB2B87CD3300511101 /* MainStoryBoard */,
-				3A64CDAA2B87CCE200511101 /* CoreData */,
 				3A64CDA92B87CCC500511101 /* SupportingFiles */,
 			);
 			path = CoreData3;
